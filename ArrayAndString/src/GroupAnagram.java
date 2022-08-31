@@ -28,7 +28,10 @@ public class GroupAnagram {
         
     }
     public List<List<String>> groupAnagrams(String[] strs) {
-        
+        /*
+         * time complexity: O(total number of characters)
+         * space complexity: O(nk)
+         */
         Map<String, List<String>> map = new HashMap<>();
         for(String s: strs){
             String code = encode(s);
