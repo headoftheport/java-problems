@@ -1,5 +1,8 @@
 package main.java;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class IntersectionLikedList {
     
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
@@ -45,5 +48,27 @@ public class IntersectionLikedList {
             len++;
         }
         return len;
+    }
+
+
+    public ListNode getIntersectionNode3(ListNode headA, ListNode headB){
+        /*
+         * using the HashSet
+         */
+
+        ListNode nodeA = headA;
+        ListNode nodeB = headB;
+        Set<ListNode> nodes = new HashSet<>();
+        while(nodeA != null){
+            nodes.add(nodeA);
+            nodeA = nodeA.next;
+        }
+        while(nodeB != null){
+            if(nodes.contains(nodeB)){
+                break;
+            }
+            nodeB = nodeB.next;
+        }
+        return nodeB;
     }
 }
