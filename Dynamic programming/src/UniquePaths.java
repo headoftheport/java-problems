@@ -55,7 +55,11 @@ public class UniquePaths {
 
         long res = 1;
         int div = 1;
-        for(int i = m + 1; i <= m+n;)
+        for(int i = m + 1; i <= m+n; i++, div++){
+            res = res * i;
+            res = res / div;
+        }
+        return (int)res
     }
     
 }
