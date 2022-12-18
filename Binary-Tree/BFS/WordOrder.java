@@ -9,7 +9,10 @@ import java.util.LinkedList;
 public class WordOrder {
     
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        
+        /*
+        space complexity: O( m^2 * n)
+        time complexity: O(m^2 * n ) 
+         */
         int L = beginWord.length();
         
         Map<String, List<String>> alComb = new HashMap<>();
