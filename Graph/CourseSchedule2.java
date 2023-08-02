@@ -46,4 +46,53 @@ class Solution {
         
         return ans;
     }
+    
+    int i = 0;
+    public int[] findOrder2(int numCourses, int[][] prerequisites) {
+        
+        List<Integer>[] adj = new ArrayList[numCourses];
+        int[] visited = new int[numCourses];
+        
+        for(int i = 0; i < numCourses; i++){
+            adj[i] = new ArrayList<Integer>();
+        }
+        
+        for(int[] edge: prerequisites){
+            adj[edge[0]].add(edge[1]);
+        }
+        
+        int[] ans = new int[numCourses];
+        
+        for(int i=0; i < numCourses; i++){
+            if(!dfs(i, adj, visited, ans)){
+                return new int[0];
+            }
+        }
+        
+        return ans;
+           
+    }
+    
+    public boolean dfs(int index, List<Integer>[] adj, int[] visited, int[] ans){
+        
+        if(visited[index] == -1){
+            return false;
+        }
+        
+        if(visited[index] == 1){
+            return true;
+        }
+        
+        visited[index] = -1;
+        
+        for(int next: adj[index]){
+            if(!dfs(next, adj, visited, ans)){
+                return false;
+            }
+        }
+        
+        visited[index] = 1;
+        ans[i++] = index; 
+        return true;
+    }
 }
